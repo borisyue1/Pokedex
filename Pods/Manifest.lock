@@ -1,0 +1,15 @@
+PODS:
+  - DropDown (2)
+  - SideMenu (2.2.0)
+
+DEPENDENCIES:
+  - DropDown
+  - SideMenu
+
+SPEC CHECKSUMS:
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
+  SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
+
+PODFILE CHECKSUM: bf4318be9483404d0d0e68208e88523f3df402ca
+
+COCOAPODS: 1.2.0
