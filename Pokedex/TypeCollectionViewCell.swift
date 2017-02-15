@@ -14,6 +14,10 @@ class TypeCollectionViewCell: UICollectionViewCell {
     var typeButton: UIButton!
     
     override func awakeFromNib() {
-        print("hi")
+        typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 25))
+        typeButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        typeButton.layer.cornerRadius = 3
+        typeButton.clipsToBounds = true
+        contentView.addSubview(typeButton)
     }
 }

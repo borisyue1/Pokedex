@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //    var typesButton: UIButton!
     var typeCollectionView: UICollectionView!
     var typeNames = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"]
+    var typeColors = [UIColor(red:0.66, green:0.65, blue:0.48, alpha:1.0), UIColor(red:0.93, green:0.51, blue:0.19, alpha:1.0), UIColor(red:0.39, green:0.56, blue:0.94, alpha:1.0), UIColor(red:0.97, green:0.82, blue:0.17, alpha:1.0), UIColor(red:0.48, green:0.78, blue:0.30, alpha:1.0), UIColor(red:0.59, green:0.85, blue:0.84, alpha:1.0), UIColor(red:0.76, green:0.18, blue:0.16, alpha:1.0), UIColor(red:0.64, green:0.24, blue:0.63, alpha:1.0), UIColor(red:0.89, green:0.75, blue:0.40, alpha:1.0), UIColor(red:0.66, green:0.56, blue:0.95, alpha:1.0), UIColor(red:0.98, green:0.33, blue:0.53, alpha:1.0), UIColor(red:0.65, green:0.73, blue:0.10, alpha:1.0), UIColor(red:0.71, green:0.63, blue:0.21, alpha:1.0), UIColor(red:0.45, green:0.34, blue:0.59, alpha:1.0), UIColor(red:0.44, green:0.21, blue:0.99, alpha:1.0), UIColor(red:0.44, green:0.34, blue:0.27, alpha:1.0), UIColor(red:0.72, green:0.72, blue:0.81, alpha:1.0), UIColor(red:0.84, green:0.52, blue:0.68, alpha:1.0)]
     
     var searchButton: UIButton!
     var randomButton: UIButton!
@@ -128,9 +129,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setUpTypeCollectionView() {
+        // Label setup
+        let typesLabel = UILabel(frame: CGRect(x: view.frame.width / 2.5, y: healthPointsLabel.frame.maxY + 25, width: 50, height: 20))
+        typesLabel.text = "Type:"
+        typesLabel.sizeToFit()
+        view.addSubview(typesLabel)
+        // Collection view setup
         let layout = UICollectionViewFlowLayout() //can customize layout
         layout.scrollDirection = .horizontal
-        typeCollectionView = UICollectionView(frame: CGRect(x: 0, y: healthPointsLabel.frame.maxY + 30, width: view.frame.width, height: 50), collectionViewLayout: layout)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5) // add a bit of left and right margin
+        typeCollectionView = UICollectionView(frame: CGRect(x: 0, y: typesLabel.frame.maxY + 10, width: view.frame.width, height: 30), collectionViewLayout: layout)
         typeCollectionView.register(TypeCollectionViewCell.self, forCellWithReuseIdentifier: "typeCell") //register cell with CV
         typeCollectionView.delegate = self
         typeCollectionView.dataSource = self
@@ -209,23 +217,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
         cell.awakeFromNib()
-        cell.backgroundColor = UIColor.blue
         return cell
     }
     
     // Fills each individual cell
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let typeCell = cell as! TypeCollectionViewCell
+        typeCell.typeButton.setTitle(typeNames[indexPath.row], for: .normal)
+        typeCell.typeButton.backgroundColor = typeColors[indexPath.row]
     }
     
     // Sets size of cell
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width, height: 200)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 60, height: 25)
+    }
     
     // When user clicks cell, something happens
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print(typeNames[indexPath.row])
     }
     
 }
