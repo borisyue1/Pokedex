@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,6 +18,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var defensePointsTextField: UITextField!
     var healthPointsLabel: UILabel!
     var healthPointsTextField: UITextField!
+    
+    let typeDropDown = DropDown()
+    var typesButton: UIButton!
+    var typeNames = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"]
     
     var searchButton: UIButton!
     var randomButton: UIButton!
@@ -39,6 +44,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setUpSearchBar()
         setUpKeyboardDismiss()
         setUpPointsSearch()
+        setUpTypeDropDown()
+        setUpSearchButtons()
     }
     
     func setUpScrollView() {
@@ -73,17 +80,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setUpAttackPoints()
         setUpDefensePoints()
         setUpHealthPoints()
-        setUpSearchButtons()
     }
     
     func setUpAttackPoints() {
         //label setup
-        attackPointsLabel = UILabel(frame: CGRect(x: view.frame.width / 5, y: searchBar.frame.maxY + 30, width: 30, height: 20))
+        attackPointsLabel = UILabel(frame: CGRect(x: view.frame.width / 5, y: searchBar.frame.maxY + (view.frame.height * 0.2), width: 30, height: 20))
         attackPointsLabel.text = "Minimum Attack Points: "
         attackPointsLabel.sizeToFit()
         view.addSubview(attackPointsLabel)
         // text field setup
-        attackPointsTextField = UITextField(frame: CGRect(x: attackPointsLabel.frame.maxX + 10, y: searchBar.frame.maxY + 32, width: 40, height: attackPointsLabel.frame.height))
+        attackPointsTextField = UITextField(frame: CGRect(x: attackPointsLabel.frame.maxX + 10, y: attackPointsLabel.frame.minY, width: 40, height: attackPointsLabel.frame.height))
         attackPointsTextField.layer.borderWidth = 0.3
         attackPointsTextField.layer.cornerRadius = 3
         attackPointsTextField.textAlignment = .center
@@ -93,12 +99,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func setUpDefensePoints() {
         //label setup
-        defensePointsLabel = UILabel(frame: CGRect(x: view.frame.width / 5.5, y: attackPointsLabel.frame.maxY + 20, width: 30, height: 20))
+        defensePointsLabel = UILabel(frame: CGRect(x: view.frame.width / 5.5, y: searchBar.frame.maxY + (view.frame.height * 0.4), width: 30, height: 20))
         defensePointsLabel.text = "Minimum Defense Points: "
         defensePointsLabel.sizeToFit()
         view.addSubview(defensePointsLabel)
         // text field setup
-        defensePointsTextField = UITextField(frame: CGRect(x: defensePointsLabel.frame.maxX + 10, y: attackPointsLabel.frame.maxY + 22, width: 40, height: defensePointsLabel.frame.height))
+        defensePointsTextField = UITextField(frame: CGRect(x: defensePointsLabel.frame.maxX + 10, y: defensePointsLabel.frame.minY, width: 40, height: defensePointsLabel.frame.height))
         defensePointsTextField.layer.borderWidth = 0.3
         defensePointsTextField.layer.cornerRadius = 3
         defensePointsTextField.textAlignment = .center
@@ -107,16 +113,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func setUpHealthPoints() {
         //label setup
-        healthPointsLabel = UILabel(frame: CGRect(x: view.frame.width / 5, y: defensePointsLabel.frame.maxY + 20, width: 30, height: 20))
+        healthPointsLabel = UILabel(frame: CGRect(x: view.frame.width / 5, y: searchBar.frame.maxY + (view.frame.height * 0.6), width: 30, height: 20))
         healthPointsLabel.text = "Minimum Health Points: "
         healthPointsLabel.sizeToFit()
         view.addSubview(healthPointsLabel)
         // text field setup
-        healthPointsTextField = UITextField(frame: CGRect(x: healthPointsLabel.frame.maxX + 10, y: defensePointsLabel.frame.maxY + 22, width: 40, height: healthPointsLabel.frame.height))
+        healthPointsTextField = UITextField(frame: CGRect(x: healthPointsLabel.frame.maxX + 10, y: healthPointsLabel.frame.minY, width: 40, height: healthPointsLabel.frame.height))
         healthPointsTextField.layer.borderWidth = 0.3
         healthPointsTextField.layer.cornerRadius = 3
         healthPointsTextField.textAlignment = .center
         view.addSubview(healthPointsTextField)
+    }
+    
+    func setUpTypeDropDown() {
+        // Button setup
+        typesButton = UIButton(frame: CGRect(x: view.frame.width / 3, y: healthPointsLabel.frame.maxY + 20, width: 50, height: 20))
+        typesButton.setTitle("Choose Types", for: .normal)
+        typesButton.sizeToFit()
+        typesButton.setTitleColor(UIColor.black, for: .normal)
+        typesButton.addTarget(self, action: #selector(typeButtonPressed), for: .touchUpInside)
+        view.addSubview(typesButton)
+    }
+    
+    func typeButtonPressed() {
+        // create dropdown
+        typeDropDown.anchorView = typesButton
+        typeDropDown.dataSource = typeNames
+        typeDropDown.direction = .bottom
+        typeDropDown.show()
     }
     
     func setUpSearchButtons() {
@@ -125,7 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setUpRegularSearchButton() {
-        searchButton = UIButton(frame: CGRect(x: view.frame.width / 4, y: healthPointsLabel.frame.maxY + 30, width: 50, height: 30))
+        searchButton = UIButton(frame: CGRect(x: view.frame.width / 4, y: searchBar.frame.maxY + (view.frame.height * 0.8), width: 50, height: 30))
         searchButton.setTitle("Search", for: .normal)
         searchButton.sizeToFit()
         searchButton.setTitleColor(UIColor.black, for: .normal)
@@ -138,7 +162,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setUpRandomSearchButton() {
-        randomButton = UIButton(frame: CGRect(x: view.frame.width / 1.75, y: healthPointsLabel.frame.maxY + 30, width: 50, height: 30))
+        randomButton = UIButton(frame: CGRect(x: view.frame.width / 1.75, y: searchBar.frame.maxY + (view.frame.height * 0.8), width: 50, height: 30))
         randomButton.setTitle("Random", for: .normal)
         randomButton.sizeToFit()
         randomButton.setTitleColor(UIColor.black, for: .normal)
@@ -149,5 +173,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func randomButtonPressed() {
         
     }
+    
 }
 
