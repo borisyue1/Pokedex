@@ -19,8 +19,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var healthPointsLabel: UILabel!
     var healthPointsTextField: UITextField!
     
-    let typeDropDown = DropDown()
-    var typesButton: UIButton!
+//    let typeDropDown = DropDown()
+//    var typesButton: UIButton!
+    var typeCollectionView: UICollectionView!
     var typeNames = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"]
     
     var searchButton: UIButton!
@@ -40,19 +41,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setUpUI() {
-        setUpScrollView()
+//        setUpScrollView()
         setUpSearchBar()
         setUpKeyboardDismiss()
         setUpPointsSearch()
-        setUpTypeDropDown()
+        setUpTypeCollectionView()
+//        setUpTypeDropDown()
         setUpSearchButtons()
     }
     
-    func setUpScrollView() {
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        view.addSubview(scrollView)
-        
-    }
+//    func setUpScrollView() {
+//        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+//        view.addSubview(scrollView)
+//        
+//    }
     
     func setUpSearchBar() {
         searchBar = UISearchBar(frame: CGRect(x: 0, y: (navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: 40))
@@ -125,23 +127,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(healthPointsTextField)
     }
     
-    func setUpTypeDropDown() {
-        // Button setup
-        typesButton = UIButton(frame: CGRect(x: view.frame.width / 3, y: healthPointsLabel.frame.maxY + 20, width: 50, height: 20))
-        typesButton.setTitle("Choose Types", for: .normal)
-        typesButton.sizeToFit()
-        typesButton.setTitleColor(UIColor.black, for: .normal)
-        typesButton.addTarget(self, action: #selector(typeButtonPressed), for: .touchUpInside)
-        view.addSubview(typesButton)
+    func setUpTypeCollectionView() {
+        let layout = UICollectionViewFlowLayout() //can customize layout
+        layout.scrollDirection = .horizontal
+        typeCollectionView = UICollectionView(frame: CGRect(x: 0, y: healthPointsLabel.frame.maxY + 30, width: view.frame.width, height: 50), collectionViewLayout: layout)
+        typeCollectionView.register(TypeCollectionViewCell.self, forCellWithReuseIdentifier: "typeCell") //register cell with CV
+        typeCollectionView.delegate = self
+        typeCollectionView.dataSource = self
+        typeCollectionView.backgroundColor = UIColor.white
+        typeCollectionView.showsHorizontalScrollIndicator = false //get rid of scroll bar
+        view.addSubview(typeCollectionView)
     }
     
-    func typeButtonPressed() {
-        // create dropdown
-        typeDropDown.anchorView = typesButton
-        typeDropDown.dataSource = typeNames
-        typeDropDown.direction = .bottom
-        typeDropDown.show()
-    }
+//    func setUpTypeDropDown() {
+//        // Button setup
+//        typesButton = UIButton(frame: CGRect(x: view.frame.width / 3, y: healthPointsLabel.frame.maxY + 20, width: 50, height: 20))
+//        typesButton.setTitle("Choose Types", for: .normal)
+//        typesButton.sizeToFit()
+//        typesButton.setTitleColor(UIColor.black, for: .normal)
+//        typesButton.addTarget(self, action: #selector(typeButtonPressed), for: .touchUpInside)
+//        view.addSubview(typesButton)
+//    }
+//    
+//    func typeButtonPressed() {
+//        // create dropdown
+//        typeDropDown.anchorView = typesButton
+//        typeDropDown.dataSource = typeNames
+//        typeDropDown.direction = .bottom
+//        typeDropDown.show()
+//        typeDropDown.selectionAction = { (index, name) in
+//            self.typeDropDown.show()
+//        }
+//    }
     
     func setUpSearchButtons() {
         setUpRegularSearchButton()
@@ -171,6 +188,43 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func randomButtonPressed() {
+        
+    }
+    
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    // Specifying number of sections in collection view
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    // Specifying number of cells in section
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 18
+    }
+    
+    // Dequeue cell and set it up
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
+        cell.awakeFromNib()
+        cell.backgroundColor = UIColor.blue
+        return cell
+    }
+    
+    // Fills each individual cell
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let typeCell = cell as! TypeCollectionViewCell
+    }
+    
+    // Sets size of cell
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: view.frame.width, height: 200)
+//    }
+    
+    // When user clicks cell, something happens
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     
