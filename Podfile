@@ -3,6 +3,6 @@ platform :ios, '9.0'
 use_frameworks!
 
 target "Pokedex" do
-    pod 'DropDown'
+    pod 'ASHorizontalScrollView', '~> 1.5’ 
 end
  
