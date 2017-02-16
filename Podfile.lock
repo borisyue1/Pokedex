@@ -1,15 +1,12 @@
 PODS:
   - ASHorizontalScrollView (1.5)
-  - SwiftGifOrigin (1.6.1)
 
 DEPENDENCIES:
   - ASHorizontalScrollView (~> 1.5)
-  - SwiftGifOrigin (~> 1.6.1)
 
 SPEC CHECKSUMS:
   ASHorizontalScrollView: eaa3517b040611b04444f3de2a2e08cf7f7f6368
-  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
 
-PODFILE CHECKSUM: 483f809166837222133075e6a53573dc24112f85
+PODFILE CHECKSUM: c68f5dbca883791cc621d2e65499272f9ee8a05d
 
 COCOAPODS: 1.2.0

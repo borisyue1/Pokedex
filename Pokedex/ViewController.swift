@@ -9,9 +9,13 @@
 import UIKit
 import ASHorizontalScrollView
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, UISearchBarDelegate {
+    
+    var pokemons: [Pokemon] = PokemonGenerator.getPokemonArray()
     
     var searchBar: UISearchBar!
+    var searchBarText: String!
     var imageView: UIImageView!
     var typeLabel: UILabel!
     var horizontalScrollView: ASHorizontalScrollView!
@@ -26,11 +30,14 @@ class ViewController: UIViewController {
     var randomButton: RectButton!
     
     var typeIconArray: [UIImageView] = []
-    var typeNamesArray = ["bug.png", "dark.png", "dragon.png", "electric.png", "fairy.png", "fighting.png", "fire.png", "flying.png", "ghost.png", "grass.png", "ground.png", "ice.png", "normal.png", "poison.png", "psycic.png", "rock.png", "steel.png", "water.png"]
+    var typePicsArray = ["bug.png", "dark.png", "dragon.png", "electric.png", "fairy.png", "fighting.png", "fire.png", "flying.png", "ghost.png", "grass.png", "ground.png", "ice.png", "normal.png", "poison.png", "psychic.png", "rock.png", "steel.png", "water.png"]
+    var typeNamesArray = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"]
     var pikachu = [#imageLiteral(resourceName: "pikachu-1"), #imageLiteral(resourceName: "pikachu-2"), #imageLiteral(resourceName: "pikachu-3"), #imageLiteral(resourceName: "pikachu-4"), #imageLiteral(resourceName: "pikachu-5"), #imageLiteral(resourceName: "pikachu-6"), #imageLiteral(resourceName: "pikachu-7"), #imageLiteral(resourceName: "pikachu-8"), #imageLiteral(resourceName: "pikachu-9"), #imageLiteral(resourceName: "pikachu-10"), #imageLiteral(resourceName: "pikachu-11"), #imageLiteral(resourceName: "pikachu-12"), #imageLiteral(resourceName: "pikachu-13"), #imageLiteral(resourceName: "pikachu-14"), #imageLiteral(resourceName: "pikachu-15"), #imageLiteral(resourceName: "pikachu-16"), #imageLiteral(resourceName: "pikachu-17"), #imageLiteral(resourceName: "pikachu-18"), #imageLiteral(resourceName: "pikachu-19"), #imageLiteral(resourceName: "pikachu-20"), #imageLiteral(resourceName: "pikachu-21"), #imageLiteral(resourceName: "pikachu-22"), #imageLiteral(resourceName: "pikachu-23"), #imageLiteral(resourceName: "pikachu-24"), #imageLiteral(resourceName: "pikachu-25"), #imageLiteral(resourceName: "pikachu-26"), #imageLiteral(resourceName: "pikachu-27"), #imageLiteral(resourceName: "pikachu-28"), #imageLiteral(resourceName: "pikachu-29"), #imageLiteral(resourceName: "pikachu-30"), #imageLiteral(resourceName: "pikachu-31"), #imageLiteral(resourceName: "pikachu-32"), #imageLiteral(resourceName: "pikachu-33")]
+    var noSelectedTypes = true //when no types are selected by user, all the types are selected by default
     
     //FOR ALL DATA THAT WILL BE PASSED TO THE DISPLAY VIEW
-    var typesToSearch: [Int] = [] // index of types that have been selected
+    var pokemonsToPass: [Pokemon] = PokemonGenerator.getPokemonArray()
+    var typesToSearch: [String] = [] // strings of types that have been selected
     var minHP: Int = 0
     var minATK: Int = 0
     var minDEF: Int = 0
@@ -55,12 +62,17 @@ class ViewController: UIViewController {
     func initSearchBar() {
         searchBar = UISearchBar()
         searchBar.sizeToFit()
+        searchBar.delegate = self
         navigationItem.titleView = searchBar
         navigationController?.navigationBar.backgroundColor = UIColor.red
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap) // dismiss keyboard when user taps elsewhere
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBarText = searchBar.text
+        searchButtonClicked()
+    }
     func dismissKeyboard() {
         navigationItem.titleView?.endEditing(true)
     }
@@ -74,6 +86,7 @@ class ViewController: UIViewController {
     }
     
     func initHorizontalScrollViewUI() {
+        typesToSearch = typeNamesArray.map{$0.capitalized} // make selected types all the types by defult
         horizontalScrollView = ASHorizontalScrollView(frame: CGRect(x: -1, y: typeLabel.frame.maxY, width: view.frame.width + 2, height: 80))
         horizontalScrollView.uniformItemSize = CGSize(width: 60, height: 70)
         horizontalScrollView.backgroundColor = UIColor.init(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
@@ -100,7 +113,7 @@ class ViewController: UIViewController {
     
     func populateTypesView() {
         for i in 0...17 {
-            typeIconArray.append(UIImageView(image: UIImage(named: typeNamesArray[i].replacingOccurrences(of: ".png", with: "_dim.png"))))
+            typeIconArray.append(UIImageView(image: UIImage(named: typePicsArray[i].replacingOccurrences(of: ".png", with: "_dim.png"))))
             //setting up icon
             let currentIcon = typeIconArray[i]
             currentIcon.clipsToBounds = true
@@ -112,7 +125,7 @@ class ViewController: UIViewController {
             currentIcon.addGestureRecognizer(tapGestureRecognizer)
             //setting up label
             let typeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            typeLabel.text = typeNamesArray[i].replacingOccurrences(of: ".png", with: "")
+            typeLabel.text = typeNamesArray[i]
             typeLabel.textColor = UIColor.black
             typeLabel.font = UIFont(name: "PokemonGB", size: 8.0)
             typeLabel.sizeToFit()
@@ -130,12 +143,22 @@ class ViewController: UIViewController {
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         let tag = tappedImage.tag
-        if typesToSearch.contains(tag) {
-            typeIconArray[tag].image = UIImage(named: typeNamesArray[tag].replacingOccurrences(of: ".png", with: "_dim.png"))
-            typesToSearch.remove(at: typesToSearch.index(of: tag)!)
+        let typeToAdd = typeNamesArray[tag].capitalized
+        print(typesToSearch)
+        if noSelectedTypes == true { //if user has finally selected a type, the list is cleared
+            noSelectedTypes = false
+            typesToSearch.removeAll()
+        }
+        if typesToSearch.contains(typeToAdd) {
+            typeIconArray[tag].image = UIImage(named: typePicsArray[tag].replacingOccurrences(of: ".png", with: "_dim.png"))
+            typesToSearch.remove(at: typesToSearch.index(of: typeToAdd)!)
         } else {
-            typeIconArray[tag].image = UIImage(named: typeNamesArray[tag])
-            typesToSearch.append(tag)
+            typeIconArray[tag].image = UIImage(named: typePicsArray[tag])
+            typesToSearch.append(typeToAdd)
+        }
+        if typesToSearch.count == 0 { //this means the user doesn't have a type selected anymore, so have all types selected
+            noSelectedTypes = true
+            typesToSearch = typeNamesArray.map{$0.capitalized}
         }
     }
     
@@ -165,7 +188,7 @@ class ViewController: UIViewController {
     
     func setUpAttackLabel() {
         attackPointsLabel = UILabel(frame: CGRect(x: 0, y: attackPointsButton.frame.minY + (attackPointsButton.frame.height / 2) - 10, width: view.frame.width, height: 20))
-        attackPointsLabel.text = "0-1000"
+        attackPointsLabel.text = "0-200"
         attackPointsLabel.font = UIFont(name: "PokemonGB", size: 16.0)
         attackPointsLabel.setTextSpacing(spacing: 0.7)
         attackPointsLabel.textColor = UIColor.white
@@ -191,7 +214,7 @@ class ViewController: UIViewController {
     
     func setUpDefenseLabel() {
         defensePointsLabel = UILabel(frame: CGRect(x: 0, y: defensePointsButton.frame.minY + (defensePointsButton.frame.height / 2) - 10, width: view.frame.width, height: 20))
-        defensePointsLabel.text = "0-1000"
+        defensePointsLabel.text = "0-200"
         defensePointsLabel.font = UIFont(name: "PokemonGB", size: 16.0)
         defensePointsLabel.setTextSpacing(spacing: 0.7)
         defensePointsLabel.textColor = UIColor.white
@@ -217,7 +240,7 @@ class ViewController: UIViewController {
     
     func setUpHealthLabel() {
         healthPointsLabel = UILabel(frame: CGRect(x: 0, y: healthPointsButton.frame.minY + (healthPointsButton.frame.height / 2) - 10, width: view.frame.width, height: 20))
-        healthPointsLabel.text = "0-1000"
+        healthPointsLabel.text = "0-200"
         healthPointsLabel.font = UIFont(name: "PokemonGB", size: 16.0)
         healthPointsLabel.setTextSpacing(spacing: 0.7)
         healthPointsLabel.textColor = UIColor.white
@@ -240,6 +263,7 @@ class ViewController: UIViewController {
         searchButton.titleLabel?.font = UIFont(name: "PokemonGB", size: 16.0)
         searchButton.titleLabel?.setTextSpacing(spacing: 0.7)
         searchButton.backgroundColor = UIColor.init(red:180/255, green:80/255, blue: 80/255, alpha: 1.0)
+        searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
         view.addSubview(searchButton)
     }
     
@@ -249,8 +273,25 @@ class ViewController: UIViewController {
         randomButton.titleLabel?.font = UIFont(name: "PokemonGB", size: 16.0)
         randomButton.titleLabel?.setTextSpacing(spacing: 0.7)
         randomButton.backgroundColor = UIColor.init(red:190/255, green:110/255, blue: 110/255, alpha: 1.0)
+        randomButton.addTarget(self, action: #selector(randomButtonClicked), for: .touchUpInside)
         view.addSubview(randomButton)
     }
+    
+    func searchButtonClicked() {
+        generateList()
+        performSegue(withIdentifier: "toList", sender: nil)
+        
+    }
+    
+    func randomButtonClicked() {
+        performSegue(withIdentifier: "toList", sender: nil)
+    }
+    
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        if identifier == "toList" {
+//            
+//        }
+//    }
     
     //Event Listeners
     func attackClicked(sender:RectButton!) {
@@ -268,7 +309,7 @@ class ViewController: UIViewController {
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
                                         self?.minATK = Int(enteredText!)!
-                                        self?.attackPointsLabel.text = enteredText! + "-1000"
+                                        self?.attackPointsLabel.text = enteredText! + "-200"
                                         self?.resizeAttackLabel()
                                     }
         })
@@ -291,7 +332,7 @@ class ViewController: UIViewController {
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
                                         self?.minDEF = Int(enteredText!)!
-                                        self?.defensePointsLabel.text = enteredText! + "-1000"
+                                        self?.defensePointsLabel.text = enteredText! + "-200"
                                         self?.resizeDefenseLabel()
                                     }
         })
@@ -313,7 +354,7 @@ class ViewController: UIViewController {
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
                                         self?.minHP = Int(enteredText!)!
-                                        self?.healthPointsLabel.text = enteredText! + "-1000"
+                                        self?.healthPointsLabel.text = enteredText! + "-200"
                                         self?.resizeHealthLabel()
                                     }
         })
@@ -333,6 +374,43 @@ class ViewController: UIViewController {
     func resizeHealthLabel() {
         healthPointsLabel.frame = CGRect(x: view.frame.width - (healthPointsLabel.intrinsicContentSize.width) - 15, y: healthPointsButton.frame.minY + (healthPointsButton.frame.height / 2) - 10, width: healthPointsLabel.intrinsicContentSize.width, height: 20)
     }
+    
+    // GENERATE LIST OF POKEMON THAT MATCH CRITERIA OR 20 RANDOM
+    func generateList() {
+        if searchBarText != nil {
+            generateWithSearchText()
+        } else {
+            generateWithoutSearchText()
+        }
+    }
+    //DONT FORGET INDIVUDUAL
+    // if user entered something into search bar, this function is called
+    func generateWithSearchText(){
+        let selectedTypesSet: Set<String> = Set(typesToSearch)
+        for pokemon in pokemons {
+            if pokemon.name.lowercased().contains(searchBarText.lowercased()) {
+                let pokemonTypeSet: Set<String> = Set(pokemon.types)
+                if selectedTypesSet.intersection(pokemonTypeSet).count > 0 && pokemon.attack >= minATK && pokemon.defense > minDEF && pokemon.health > minHP { //if pokemon's types fall under search types and stat conditions met
+                    pokemonsToPass.append(pokemon)
+                }
+            }
+        }
+    }
+    
+    func generateWithoutSearchText(){
+        let selectedTypesSet: Set<String> = Set(typesToSearch)
+        for pokemon in pokemons {
+            let pokemonTypeSet: Set<String> = Set(pokemon.types)
+            if selectedTypesSet.intersection(pokemonTypeSet).count > 0 && pokemon.attack >= minATK && pokemon.defense > minDEF && pokemon.health > minHP {
+                pokemonsToPass.append(pokemon)
+            }
+        }
+
+    }
+    
+    func generateRandom() {
+        
+    }
                                 
 }
     
@@ -347,3 +425,5 @@ extension UILabel{
         attributedText = attributedString
     }
 }
+
+

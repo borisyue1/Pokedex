@@ -7,29 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5171909B317C2AC15448B55CA046E363 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
-		8DEE2466AFEAE813D0608CD3BF2E97A5 /* Pods-Pokedex-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3248D37C8B083C91EF2B6D5E7BABD38 /* Pods-Pokedex-dummy.m */; };
-		9208A07CF8B1F841AFEDFBD992B38CB4 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910407ACCDC732FDAE1725E198282F1 /* UIImage+Gif.swift */; };
-		9718036D5CEA510684F7E46597C7C07C /* ASHorizontalScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AD143041F518630B6ACFF6926898A30 /* ASHorizontalScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98FF5B44B41622757B392F195D84288D /* SwiftGifOrigin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 71136774CA480D0C8011179B296431FC /* SwiftGifOrigin-dummy.m */; };
+		1FE77B7488D952EC37420DF565D54D7E /* Pods-Pokedex-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF737C2699172F343717EDCBDAEB66F1 /* Pods-Pokedex-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BD174C7AEF0E0E93DF360D239FB7B13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		9718036D5CEA510684F7E46597C7C07C /* ASHorizontalScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41A7D127B1FA85DD263DE1EA213A07A4 /* ASHorizontalScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D39CACBAF60BFF3CDE0E11A2454F39E /* Pods-Pokedex-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3248D37C8B083C91EF2B6D5E7BABD38 /* Pods-Pokedex-dummy.m */; };
 		A2727029AC8EFB87DA010EBDBC25FBFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
 		AF4FF83CC57BDD33A60BABF8688891C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
-		B2B1E2549FFB803553D19C1011E7117C /* Pods-Pokedex-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF737C2699172F343717EDCBDAEB66F1 /* Pods-Pokedex-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B76E6F4B048EC48CDF8EB0040277C7A4 /* SwiftGifOrigin-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BDE3768846473AB87FF570956A93A74 /* SwiftGifOrigin-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D544D1AEB315FB99258086E17CE969A9 /* ASHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C373A63AB070214B542F0D545A48CFA /* ASHorizontalScrollView.swift */; };
-		DE2D7B8DE75219350F00B2030A1D74EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
-		F20253F63026B9B275652E1D4419A249 /* ASHorizontalScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731C2C980C02DDD5224F35E00965D12 /* ASHorizontalScrollView-dummy.m */; };
+		D544D1AEB315FB99258086E17CE969A9 /* ASHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B3296562B70F4C255F81240AF1893 /* ASHorizontalScrollView.swift */; };
+		F20253F63026B9B275652E1D4419A249 /* ASHorizontalScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 316EE2158D02C426271A1524178F2C68 /* ASHorizontalScrollView-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		41F1B5B0A8327E7E03DA937F77DAA044 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF8216E9E67456708E9199483756A598;
-			remoteInfo = SwiftGifOrigin;
-		};
-		BDB64AB499196373B5DB905F5D3F2478 /* PBXContainerItemProxy */ = {
+		702ECA88E9DE4EC8E19FC90469BBB098 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -40,35 +29,27 @@
 
 /* Begin PBXFileReference section */
 		02DA0DCBE799EBF2FF0A720143617FDC /* Pods-Pokedex-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pokedex-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1731C2C980C02DDD5224F35E00965D12 /* ASHorizontalScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ASHorizontalScrollView-dummy.m"; sourceTree = "<group>"; };
-		1C373A63AB070214B542F0D545A48CFA /* ASHorizontalScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ASHorizontalScrollView.swift; path = Sources/ASHorizontalScrollView.swift; sourceTree = "<group>"; };
-		1C3E3A1C02E14D1AA0B717760DF83876 /* ASHorizontalScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASHorizontalScrollView-prefix.pch"; sourceTree = "<group>"; };
-		2531D9A53B51EC7C55EC6A3F6FBC6482 /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pokedex.framework; path = "Pods-Pokedex.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AD143041F518630B6ACFF6926898A30 /* ASHorizontalScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASHorizontalScrollView-umbrella.h"; sourceTree = "<group>"; };
-		3BC76313DB5FA49C3BD5908E40ED8889 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BDE3768846473AB87FF570956A93A74 /* SwiftGifOrigin-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-umbrella.h"; sourceTree = "<group>"; };
-		469721C330C394C38313F886DBB48F34 /* SwiftGifOrigin-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-prefix.pch"; sourceTree = "<group>"; };
+		0780AFE0951A5FF6F121BF7D81380F94 /* ASHorizontalScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ASHorizontalScrollView.framework; path = ASHorizontalScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		316EE2158D02C426271A1524178F2C68 /* ASHorizontalScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ASHorizontalScrollView-dummy.m"; sourceTree = "<group>"; };
+		41A7D127B1FA85DD263DE1EA213A07A4 /* ASHorizontalScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASHorizontalScrollView-umbrella.h"; sourceTree = "<group>"; };
 		4DF0BC7442C18668B61930A9D37429FB /* Pods-Pokedex-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pokedex-resources.sh"; sourceTree = "<group>"; };
+		54D94A337D9D2F6821F63319CE5E1500 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		563C9F1B6B4974A0B84D1C00B8CE5920 /* Pods-Pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pokedex.debug.xcconfig"; sourceTree = "<group>"; };
-		575D640B5DFDB98B9B89020FE593B018 /* ASHorizontalScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ASHorizontalScrollView.framework; path = ASHorizontalScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		71136774CA480D0C8011179B296431FC /* SwiftGifOrigin-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftGifOrigin-dummy.m"; sourceTree = "<group>"; };
 		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8B9D3E65A17DDEBEEB3E9620E8DCDB2C /* Pods-Pokedex-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pokedex-acknowledgements.plist"; sourceTree = "<group>"; };
-		8DCA6A80914BF1446ACFF0AA6C4065B3 /* SwiftGifOrigin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftGifOrigin.xcconfig; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		968176F851DCCF264444A0E2B24FA926 /* SwiftGifOrigin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftGifOrigin.modulemap; sourceTree = "<group>"; };
-		9AA77472C5D2778CD35E906641F8E8D4 /* ASHorizontalScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ASHorizontalScrollView.modulemap; sourceTree = "<group>"; };
-		AADCB3C5BB99A9A5EFC71C1725D5C0BD /* ASHorizontalScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ASHorizontalScrollView.xcconfig; sourceTree = "<group>"; };
-		B8204D1D20354E1943C7851689D00EF8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEEDA786DDC04DEF4B5B7D3FB365E64D /* Pods-Pokedex.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Pokedex.modulemap"; sourceTree = "<group>"; };
-		C8A5C248CA1133BEDA566ED5F5D014E9 /* SwiftGifOrigin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftGifOrigin.framework; path = SwiftGifOrigin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C910407ACCDC732FDAE1725E198282F1 /* UIImage+Gif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "SwiftGifCommon/UIImage+Gif.swift"; sourceTree = "<group>"; };
 		CF4FB5751CED7C16D2FC91CB60E179A0 /* Pods-Pokedex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pokedex.release.xcconfig"; sourceTree = "<group>"; };
 		D3248D37C8B083C91EF2B6D5E7BABD38 /* Pods-Pokedex-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pokedex-dummy.m"; sourceTree = "<group>"; };
+		D34B3296562B70F4C255F81240AF1893 /* ASHorizontalScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ASHorizontalScrollView.swift; path = Sources/ASHorizontalScrollView.swift; sourceTree = "<group>"; };
+		DDC274A14D9C58A74FE5950A9453413E /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pokedex.framework; path = "Pods-Pokedex.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF737C2699172F343717EDCBDAEB66F1 /* Pods-Pokedex-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pokedex-umbrella.h"; sourceTree = "<group>"; };
 		E112A3039FC5908C2D85A01CD311B440 /* Pods-Pokedex-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pokedex-frameworks.sh"; sourceTree = "<group>"; };
 		E4EA4A3FB908D7F1126C2258CEAE1679 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC83A895B76A59C4DADA375A8ADA712A /* ASHorizontalScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASHorizontalScrollView-prefix.pch"; sourceTree = "<group>"; };
+		FB83419EE119BD3EDF5F6D89BD13A972 /* ASHorizontalScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ASHorizontalScrollView.modulemap; sourceTree = "<group>"; };
+		FF817720192655D091475F7AEACB373F /* ASHorizontalScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ASHorizontalScrollView.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,19 +62,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B5B0566241B0A53AE88509A25866EBD /* Frameworks */ = {
+		53BB3A8C18547461AD7EE2E1FC1B4707 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5171909B317C2AC15448B55CA046E363 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A292BB7C12DA1441E44A34F85CEEDE7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE2D7B8DE75219350F00B2030A1D74EA /* Foundation.framework in Frameworks */,
+				4BD174C7AEF0E0E93DF360D239FB7B13 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,30 +81,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		29242CEDD83AB0576BE30678EEF78782 /* ASHorizontalScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				1C373A63AB070214B542F0D545A48CFA /* ASHorizontalScrollView.swift */,
-				4137B533976CEDF3F2F307998882E190 /* Support Files */,
-			);
-			name = ASHorizontalScrollView;
-			path = ASHorizontalScrollView;
-			sourceTree = "<group>";
-		};
-		4137B533976CEDF3F2F307998882E190 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9AA77472C5D2778CD35E906641F8E8D4 /* ASHorizontalScrollView.modulemap */,
-				AADCB3C5BB99A9A5EFC71C1725D5C0BD /* ASHorizontalScrollView.xcconfig */,
-				1731C2C980C02DDD5224F35E00965D12 /* ASHorizontalScrollView-dummy.m */,
-				1C3E3A1C02E14D1AA0B717760DF83876 /* ASHorizontalScrollView-prefix.pch */,
-				2AD143041F518630B6ACFF6926898A30 /* ASHorizontalScrollView-umbrella.h */,
-				3BC76313DB5FA49C3BD5908E40ED8889 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ASHorizontalScrollView";
-			sourceTree = "<group>";
-		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,26 +89,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		65F8984A5023723C676898F5384822D0 /* Support Files */ = {
+		4347DE05F6B9E8DF99078A4630BEAEB3 /* ASHorizontalScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				B8204D1D20354E1943C7851689D00EF8 /* Info.plist */,
-				968176F851DCCF264444A0E2B24FA926 /* SwiftGifOrigin.modulemap */,
-				8DCA6A80914BF1446ACFF0AA6C4065B3 /* SwiftGifOrigin.xcconfig */,
-				71136774CA480D0C8011179B296431FC /* SwiftGifOrigin-dummy.m */,
-				469721C330C394C38313F886DBB48F34 /* SwiftGifOrigin-prefix.pch */,
-				3BDE3768846473AB87FF570956A93A74 /* SwiftGifOrigin-umbrella.h */,
+				D34B3296562B70F4C255F81240AF1893 /* ASHorizontalScrollView.swift */,
+				E7A4BE2261C7314FE1113ACD62F3EBDE /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftGifOrigin";
+			name = ASHorizontalScrollView;
+			path = ASHorizontalScrollView;
 			sourceTree = "<group>";
 		};
-		709BC9FAE37FCBDF606DEB83E3A4959A /* Products */ = {
+		719F2D57DC9BE096B005B18D720CDB2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				575D640B5DFDB98B9B89020FE593B018 /* ASHorizontalScrollView.framework */,
-				2531D9A53B51EC7C55EC6A3F6FBC6482 /* Pods_Pokedex.framework */,
-				C8A5C248CA1133BEDA566ED5F5D014E9 /* SwiftGifOrigin.framework */,
+				0780AFE0951A5FF6F121BF7D81380F94 /* ASHorizontalScrollView.framework */,
+				DDC274A14D9C58A74FE5950A9453413E /* Pods_Pokedex.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,29 +131,18 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				BCD7D81472A497CFF2EE22FD641A638A /* Pods */,
-				709BC9FAE37FCBDF606DEB83E3A4959A /* Products */,
+				960437D85506040DA5F0CF200E8625BC /* Pods */,
+				719F2D57DC9BE096B005B18D720CDB2A /* Products */,
 				0956B77035BC83F6F3A1B0CB3234EB4C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		BCD7D81472A497CFF2EE22FD641A638A /* Pods */ = {
+		960437D85506040DA5F0CF200E8625BC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29242CEDD83AB0576BE30678EEF78782 /* ASHorizontalScrollView */,
-				BDF0732B488D9EEB7D0DE70B6729B29F /* SwiftGifOrigin */,
+				4347DE05F6B9E8DF99078A4630BEAEB3 /* ASHorizontalScrollView */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		BDF0732B488D9EEB7D0DE70B6729B29F /* SwiftGifOrigin */ = {
-			isa = PBXGroup;
-			children = (
-				C910407ACCDC732FDAE1725E198282F1 /* UIImage+Gif.swift */,
-				65F8984A5023723C676898F5384822D0 /* Support Files */,
-			);
-			name = SwiftGifOrigin;
-			path = SwiftGifOrigin;
 			sourceTree = "<group>";
 		};
 		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
@@ -219,6 +152,20 @@
 				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		E7A4BE2261C7314FE1113ACD62F3EBDE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB83419EE119BD3EDF5F6D89BD13A972 /* ASHorizontalScrollView.modulemap */,
+				FF817720192655D091475F7AEACB373F /* ASHorizontalScrollView.xcconfig */,
+				316EE2158D02C426271A1524178F2C68 /* ASHorizontalScrollView-dummy.m */,
+				EC83A895B76A59C4DADA375A8ADA712A /* ASHorizontalScrollView-prefix.pch */,
+				41A7D127B1FA85DD263DE1EA213A07A4 /* ASHorizontalScrollView-umbrella.h */,
+				54D94A337D9D2F6821F63319CE5E1500 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ASHorizontalScrollView";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,44 +179,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7002F4A9F80D41678BA30F10A6A7A128 /* Headers */ = {
+		6366FCD5621B9FD8174B54BA1A345B87 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76E6F4B048EC48CDF8EB0040277C7A4 /* SwiftGifOrigin-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7B5E4C957FABE1CB6129FA5B98C8FF76 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2B1E2549FFB803553D19C1011E7117C /* Pods-Pokedex-umbrella.h in Headers */,
+				1FE77B7488D952EC37420DF565D54D7E /* Pods-Pokedex-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2EA9D5DE115072C00122862F6F66D281 /* Pods-Pokedex */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B855EFF6D5CA69CEB7697F4A99A0C3A9 /* Build configuration list for PBXNativeTarget "Pods-Pokedex" */;
-			buildPhases = (
-				6F6E1EBFA74EF09B83732719A303932F /* Sources */,
-				9A292BB7C12DA1441E44A34F85CEEDE7 /* Frameworks */,
-				7B5E4C957FABE1CB6129FA5B98C8FF76 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8BD48D381F3FA0F63330089D77FC98FC /* PBXTargetDependency */,
-				EDF117C9A81455E8E837162983F1BA01 /* PBXTargetDependency */,
-			);
-			name = "Pods-Pokedex";
-			productName = "Pods-Pokedex";
-			productReference = 2531D9A53B51EC7C55EC6A3F6FBC6482 /* Pods_Pokedex.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		7314180BE9DF7EC9AED878748EC34864 /* ASHorizontalScrollView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF0EA17627314F9111495C39F157639E /* Build configuration list for PBXNativeTarget "ASHorizontalScrollView" */;
@@ -284,24 +204,25 @@
 			);
 			name = ASHorizontalScrollView;
 			productName = ASHorizontalScrollView;
-			productReference = 575D640B5DFDB98B9B89020FE593B018 /* ASHorizontalScrollView.framework */;
+			productReference = 0780AFE0951A5FF6F121BF7D81380F94 /* ASHorizontalScrollView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DF8216E9E67456708E9199483756A598 /* SwiftGifOrigin */ = {
+		8C1368F19936D62FB5CF946A89C28E09 /* Pods-Pokedex */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E12B5694D9420A69E01C325202E2EAE1 /* Build configuration list for PBXNativeTarget "SwiftGifOrigin" */;
+			buildConfigurationList = D20E7071786B661563FAEF1B9F818BC3 /* Build configuration list for PBXNativeTarget "Pods-Pokedex" */;
 			buildPhases = (
-				C0FDA3D3366D8ED32EABF397BD222019 /* Sources */,
-				2B5B0566241B0A53AE88509A25866EBD /* Frameworks */,
-				7002F4A9F80D41678BA30F10A6A7A128 /* Headers */,
+				9852A31FD426FF868FBFE4E88BA820BC /* Sources */,
+				53BB3A8C18547461AD7EE2E1FC1B4707 /* Frameworks */,
+				6366FCD5621B9FD8174B54BA1A345B87 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6CC35BBF62F5A7084CE634692AB0599B /* PBXTargetDependency */,
 			);
-			name = SwiftGifOrigin;
-			productName = SwiftGifOrigin;
-			productReference = C8A5C248CA1133BEDA566ED5F5D014E9 /* SwiftGifOrigin.framework */;
+			name = "Pods-Pokedex";
+			productName = "Pods-Pokedex";
+			productReference = DDC274A14D9C58A74FE5950A9453413E /* Pods_Pokedex.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -321,32 +242,22 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 709BC9FAE37FCBDF606DEB83E3A4959A /* Products */;
+			productRefGroup = 719F2D57DC9BE096B005B18D720CDB2A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				7314180BE9DF7EC9AED878748EC34864 /* ASHorizontalScrollView */,
-				2EA9D5DE115072C00122862F6F66D281 /* Pods-Pokedex */,
-				DF8216E9E67456708E9199483756A598 /* SwiftGifOrigin */,
+				8C1368F19936D62FB5CF946A89C28E09 /* Pods-Pokedex */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6F6E1EBFA74EF09B83732719A303932F /* Sources */ = {
+		9852A31FD426FF868FBFE4E88BA820BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DEE2466AFEAE813D0608CD3BF2E97A5 /* Pods-Pokedex-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C0FDA3D3366D8ED32EABF397BD222019 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				98FF5B44B41622757B392F195D84288D /* SwiftGifOrigin-dummy.m in Sources */,
-				9208A07CF8B1F841AFEDFBD992B38CB4 /* UIImage+Gif.swift in Sources */,
+				9D39CACBAF60BFF3CDE0E11A2454F39E /* Pods-Pokedex-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,93 +273,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8BD48D381F3FA0F63330089D77FC98FC /* PBXTargetDependency */ = {
+		6CC35BBF62F5A7084CE634692AB0599B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ASHorizontalScrollView;
 			target = 7314180BE9DF7EC9AED878748EC34864 /* ASHorizontalScrollView */;
-			targetProxy = BDB64AB499196373B5DB905F5D3F2478 /* PBXContainerItemProxy */;
-		};
-		EDF117C9A81455E8E837162983F1BA01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftGifOrigin;
-			target = DF8216E9E67456708E9199483756A598 /* SwiftGifOrigin */;
-			targetProxy = 41F1B5B0A8327E7E03DA937F77DAA044 /* PBXContainerItemProxy */;
+			targetProxy = 702ECA88E9DE4EC8E19FC90469BBB098 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0E6396B8CF0F781C9053F68C69193DC1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DCA6A80914BF1446ACFF0AA6C4065B3 /* SwiftGifOrigin.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftGifOrigin/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftGifOrigin;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2D8900BDE6218358EAF07DAF1AA746E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 563C9F1B6B4974A0B84D1C00B8CE5920 /* Pods-Pokedex.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Pokedex/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pokedex/Pods-Pokedex.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Pokedex;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		3BD397673B5183AF8ED056F607768329 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AADCB3C5BB99A9A5EFC71C1725D5C0BD /* ASHorizontalScrollView.xcconfig */;
+			baseConfigurationReference = FF817720192655D091475F7AEACB373F /* ASHorizontalScrollView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -525,7 +361,7 @@
 		};
 		76C090C7D71AE78F451A15CD42869CA3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AADCB3C5BB99A9A5EFC71C1725D5C0BD /* ASHorizontalScrollView.xcconfig */;
+			baseConfigurationReference = FF817720192655D091475F7AEACB373F /* ASHorizontalScrollView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -555,15 +391,15 @@
 			};
 			name = Release;
 		};
-		A1193F8B2C6B221A96ED4377AAA88B91 /* Release */ = {
+		937B24E2B0C29F9D55AEC23EB5BBF2F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF4FB5751CED7C16D2FC91CB60E179A0 /* Pods-Pokedex.release.xcconfig */;
+			baseConfigurationReference = 563C9F1B6B4974A0B84D1C00B8CE5920 /* Pods-Pokedex.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -576,7 +412,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Pokedex/Pods-Pokedex.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -584,11 +420,12 @@
 				PRODUCT_NAME = Pods_Pokedex;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -630,9 +467,9 @@
 			};
 			name = Release;
 		};
-		F7AD3407B373D136748D4E704AB0120E /* Release */ = {
+		D063D3D78170519F5DF72B6F0526E45A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DCA6A80914BF1446ACFF0AA6C4065B3 /* SwiftGifOrigin.xcconfig */;
+			baseConfigurationReference = CF4FB5751CED7C16D2FC91CB60E179A0 /* Pods-Pokedex.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -645,17 +482,20 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftGifOrigin/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pokedex/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pokedex/Pods-Pokedex.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftGifOrigin;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Pokedex;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -674,20 +514,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B855EFF6D5CA69CEB7697F4A99A0C3A9 /* Build configuration list for PBXNativeTarget "Pods-Pokedex" */ = {
+		D20E7071786B661563FAEF1B9F818BC3 /* Build configuration list for PBXNativeTarget "Pods-Pokedex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D8900BDE6218358EAF07DAF1AA746E1 /* Debug */,
-				A1193F8B2C6B221A96ED4377AAA88B91 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E12B5694D9420A69E01C325202E2EAE1 /* Build configuration list for PBXNativeTarget "SwiftGifOrigin" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0E6396B8CF0F781C9053F68C69193DC1 /* Debug */,
-				F7AD3407B373D136748D4E704AB0120E /* Release */,
+				937B24E2B0C29F9D55AEC23EB5BBF2F5 /* Debug */,
+				D063D3D78170519F5DF72B6F0526E45A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
