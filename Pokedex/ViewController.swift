@@ -144,7 +144,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         let tag = tappedImage.tag
         let typeToAdd = typeNamesArray[tag].capitalized
-        print(typesToSearch)
         if noSelectedTypes == true { //if user has finally selected a type, the list is cleared
             noSelectedTypes = false
             typesToSearch.removeAll()
@@ -278,7 +277,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchButtonClicked() {
-        generateList()
+        print(pokemons.count)
         performSegue(withIdentifier: "toList", sender: nil)
         
     }
@@ -287,11 +286,12 @@ class ViewController: UIViewController, UISearchBarDelegate {
         performSegue(withIdentifier: "toList", sender: nil)
     }
     
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        if identifier == "toList" {
-//            
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toList" {
+            let listVC = segue.destination as! PokemonListViewController
+            listVC.pokemons = self.pokemonsToPass
+        }
+    }
     
     //Event Listeners
     func attackClicked(sender:RectButton!) {
@@ -305,7 +305,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
                                     if let textFields = self?.alertController?.textFields{
-                                        //print(text)
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
                                         self?.minATK = Int(enteredText!)!
@@ -328,7 +327,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
                                     if let textFields = self?.alertController?.textFields{
-                                        //print(text)
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
                                         self?.minDEF = Int(enteredText!)!
@@ -350,7 +348,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
                                     if let textFields = self?.alertController?.textFields{
-                                        //print(text)
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
                                         self?.minHP = Int(enteredText!)!
@@ -377,6 +374,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     // GENERATE LIST OF POKEMON THAT MATCH CRITERIA OR 20 RANDOM
     func generateList() {
+        pokemonsToPass.removeAll()
         if searchBarText != nil {
             generateWithSearchText()
         } else {
