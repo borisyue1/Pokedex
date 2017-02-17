@@ -34,6 +34,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     var typeNamesArray = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"]
     var pikachu = [#imageLiteral(resourceName: "pikachu-1"), #imageLiteral(resourceName: "pikachu-2"), #imageLiteral(resourceName: "pikachu-3"), #imageLiteral(resourceName: "pikachu-4"), #imageLiteral(resourceName: "pikachu-5"), #imageLiteral(resourceName: "pikachu-6"), #imageLiteral(resourceName: "pikachu-7"), #imageLiteral(resourceName: "pikachu-8"), #imageLiteral(resourceName: "pikachu-9"), #imageLiteral(resourceName: "pikachu-10"), #imageLiteral(resourceName: "pikachu-11"), #imageLiteral(resourceName: "pikachu-12"), #imageLiteral(resourceName: "pikachu-13"), #imageLiteral(resourceName: "pikachu-14"), #imageLiteral(resourceName: "pikachu-15"), #imageLiteral(resourceName: "pikachu-16"), #imageLiteral(resourceName: "pikachu-17"), #imageLiteral(resourceName: "pikachu-18"), #imageLiteral(resourceName: "pikachu-19"), #imageLiteral(resourceName: "pikachu-20"), #imageLiteral(resourceName: "pikachu-21"), #imageLiteral(resourceName: "pikachu-22"), #imageLiteral(resourceName: "pikachu-23"), #imageLiteral(resourceName: "pikachu-24"), #imageLiteral(resourceName: "pikachu-25"), #imageLiteral(resourceName: "pikachu-26"), #imageLiteral(resourceName: "pikachu-27"), #imageLiteral(resourceName: "pikachu-28"), #imageLiteral(resourceName: "pikachu-29"), #imageLiteral(resourceName: "pikachu-30"), #imageLiteral(resourceName: "pikachu-31"), #imageLiteral(resourceName: "pikachu-32"), #imageLiteral(resourceName: "pikachu-33")]
     var noSelectedTypes = true //when no types are selected by user, all the types are selected by default
+    var randomIndexesPicked: [Int] = [] //keep track of random indexes that have been picked to ensure no repeats
     
     //FOR ALL DATA THAT WILL BE PASSED TO THE DISPLAY VIEW
     var pokemonsToPass: [Pokemon] = PokemonGenerator.getPokemonArray()
@@ -70,7 +71,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBarText = searchBar.text
         searchButtonClicked()
     }
     func dismissKeyboard() {
@@ -272,19 +272,25 @@ class ViewController: UIViewController, UISearchBarDelegate {
         randomButton.titleLabel?.font = UIFont(name: "PokemonGB", size: 16.0)
         randomButton.titleLabel?.setTextSpacing(spacing: 0.7)
         randomButton.backgroundColor = UIColor.init(red:190/255, green:110/255, blue: 110/255, alpha: 1.0)
-        randomButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
+        randomButton.addTarget(self, action: #selector(randomButtonClicked), for: .touchUpInside)
         view.addSubview(randomButton)
     }
     
     func searchButtonClicked() {
+        searchBarText = searchBar.text
         generateList()
         performSegue(withIdentifier: "toList", sender: nil)
-        
+    }
+    
+    func randomButtonClicked() {
+        generateRandom()
+        performSegue(withIdentifier: "toList", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toList" {
             let listVC = segue.destination as! PokemonListViewController
+            pokemonsToPass = pokemonsToPass.sorted{$0.name < $1.name} //sort alphabetically
             listVC.pokemons = self.pokemonsToPass
         }
     }
@@ -371,12 +377,11 @@ class ViewController: UIViewController, UISearchBarDelegate {
     // GENERATE LIST OF POKEMON THAT MATCH CRITERIA OR 20 RANDOM
     func generateList() {
         pokemonsToPass.removeAll()
-        if searchBarText != nil {
+        if searchBarText != "" {
             generateWithSearchText()
         } else {
             generateWithoutSearchText()
         }
-        pokemonsToPass = pokemonsToPass.sorted{$0.name < $1.name} //sort alphabetically
     }
     //DONT FORGET INDIVUDUAL
     // if user entered something into search bar, this function is called
@@ -404,7 +409,21 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func generateRandom() {
-        
+        pokemonsToPass.removeAll()
+        for _ in 0..<20 {
+            let randomIndex = pickRandomIndex(index: Int(arc4random_uniform(UInt32(pokemons.count))))
+            randomIndexesPicked.append(randomIndex)
+            pokemonsToPass.append(pokemons[randomIndex])
+        }
+        randomIndexesPicked.removeAll()
+    }
+    
+    func pickRandomIndex( index: Int) -> Int {
+        var i = index
+        while randomIndexesPicked.contains(i) {
+            i = Int(arc4random_uniform(UInt32(pokemons.count)))
+        }
+        return i
     }
                                 
 }

@@ -27,12 +27,16 @@ class PokemonListViewController: UIViewController {
     }
     
     func setUpTableView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.maxY - UIApplication.shared.statusBarFrame.height, width: view.frame.width, height: view.frame.height))
+        tableView = UITableView(frame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.minY, width: view.frame.width, height: view.frame.height))
         tableView.register(PokemonListTableViewCell.self, forCellReuseIdentifier: "pokemonCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 50
         view.addSubview(tableView)
+    }
+    
+    func setUpCollectionView() {
+        
     }
     
     func setUpSegmentedControl() {
@@ -50,7 +54,7 @@ class PokemonListViewController: UIViewController {
         case 0:
             setUpTableView()
         case 1:
-            print("hi")
+            setUpCollectionView()
         default:
             print("default")
         }
@@ -85,7 +89,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
             }
         }
         //setting up text
-        pokeCell.name.text = currentPokemon.name.replacingOccurrences(of: "  ", with: " ") // make it a bit neater
+        pokeCell.name.text = currentPokemon.name.replacingOccurrences(of: "  ", with: " ") // make it a bit neater, get rid of double spaces
         pokeCell.name.sizeToFit()
         pokeCell.name.frame.origin.y = tableView.rowHeight / 2 - pokeCell.name.frame.height / 2
         pokeCell.name.frame.origin.x = pokeCell.pokeImage.frame.maxX + 10
