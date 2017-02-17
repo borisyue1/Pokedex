@@ -41,6 +41,7 @@
                     <navigationItem key="navigationItem" id="t9L-mz-J8n"/>
                     <connections>
                         <segue destination="CEr-6k-HdZ" kind="show" identifier="toList" id="Sfj-Uf-kET"/>
+                        <segue destination="Ic7-xV-0ot" kind="show" identifier="toDirectProfile" id="zdO-i5-7DA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,4 +145,7 @@
             <point key="canvasLocation" x="1642" y="133"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zdO-i5-7DA"/>
+    </inferredMetricsTieBreakers>
 </document>

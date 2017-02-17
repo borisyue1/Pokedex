@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.tintColor = UIColor.black
-        currentPokemon = Pokemon.init(name: "Charizard", number: 004, attack: 500, defense: 300, health: 340, spAttack: 240, spDef: 240, species: "Pringus", speed: 300, total: 890, types: types)
+//        currentPokemon = Pokemon.init(name: "Charizard", number: 004, attack: 500, defense: 300, health: 340, spAttack: 240, spDef: 240, species: "Pringus", speed: 300, total: 890, types: types)
         initImageViewUI()
         initLabelUI()
         initNumLabelUI()
@@ -94,9 +94,6 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
         view.addSubview(topView)
         view.addSubview(middleView)
         // Do any additional setup after loading the view.
@@ -104,7 +101,7 @@ class ProfileViewController: UIViewController {
     
     func initTypeRectsUI() {
         if currentPokemon.types.count == 1 {
-            typeRects.append(RectButton(frame: CGRect(x: 0, y: imageView.frame.maxY + 10, width: view.frame.width, height: 35)))
+            typeRects.append(RectButton(frame: CGRect(x: view.frame.width / 2 - 60, y: imageView.frame.maxY + 10, width: 120, height: 35)))
             typeRects[0].setTitle(currentPokemon.types[0], for: .normal)
             typeRects[0].titleLabel?.font = UIFont(name: "PokemonGB", size: 12.0)
             typeRects[0].titleLabel?.setTextSpacing(spacing: 0.7)

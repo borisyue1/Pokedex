@@ -38,6 +38,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     //FOR ALL DATA THAT WILL BE PASSED TO THE DISPLAY VIEW
     var pokemonsToPass: [Pokemon] = PokemonGenerator.getPokemonArray()
+    var pokemonDirectPass: Pokemon! // passes searched pokemon straight to profile view
     var typesToSearch: [String] = [] // strings of types that have been selected
     var minHP: Int = 0
     var minATK: Int = 0
@@ -279,12 +280,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
     func searchButtonClicked() {
         searchBarText = searchBar.text
         generateList()
-        performSegue(withIdentifier: "toList", sender: nil)
     }
     
     func randomButtonClicked() {
         generateRandom()
-        performSegue(withIdentifier: "toList", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -292,6 +291,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
             let listVC = segue.destination as! PokemonListViewController
             pokemonsToPass = pokemonsToPass.sorted{$0.name < $1.name} //sort alphabetically
             listVC.pokemons = self.pokemonsToPass
+        }
+        if segue.identifier == "toDirectProfile" {
+            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
+            profileVC.currentPokemon = pokemonDirectPass
         }
     }
     
@@ -388,13 +391,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
     func generateWithSearchText(){
         let selectedTypesSet: Set<String> = Set(typesToSearch)
         for pokemon in pokemons {
-            if pokemon.name.lowercased().contains(searchBarText.lowercased()) || Int(searchBarText) == pokemon.number {
+            if pokemon.name.lowercased() == searchBarText.lowercased() || Int(searchBarText) == pokemon.number {
+                pokemonDirectPass = pokemon
+                performSegue(withIdentifier: "toDirectProfile", sender: self)
+                return
+            } else if pokemon.name.lowercased().contains(searchBarText.lowercased()) {
                 let pokemonTypeSet: Set<String> = Set(pokemon.types)
                 if selectedTypesSet.intersection(pokemonTypeSet).count > 0 && pokemon.attack >= minATK && pokemon.defense > minDEF && pokemon.health > minHP { //if pokemon's types fall under search types and stat conditions met
                     pokemonsToPass.append(pokemon)
                 }
             }
         }
+        performSegue(withIdentifier: "toList", sender: nil)
     }
     
     func generateWithoutSearchText(){
@@ -405,6 +413,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
                 pokemonsToPass.append(pokemon)
             }
         }
+        performSegue(withIdentifier: "toList", sender: nil)
 
     }
     
@@ -416,6 +425,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             pokemonsToPass.append(pokemons[randomIndex])
         }
         randomIndexesPicked.removeAll()
+        performSegue(withIdentifier: "toList", sender: nil)
     }
     
     func pickRandomIndex( index: Int) -> Int {

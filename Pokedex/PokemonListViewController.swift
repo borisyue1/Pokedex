@@ -11,6 +11,7 @@ import UIKit
 class PokemonListViewController: UIViewController {
 
     var pokemons: [Pokemon]!
+    var selectedPokemon: Pokemon!
     var tableView: UITableView!
     var segmentedControl: UISegmentedControl!
     
@@ -60,6 +61,12 @@ class PokemonListViewController: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfile" {
+            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
+            profileVC.currentPokemon = selectedPokemon
+        }
+    }
 }
 
 extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -76,6 +83,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
         }
         pokeCell.awakeFromNib() //initialize cell
         let currentPokemon = pokemons[indexPath.row]
+        print(currentPokemon.name)
         // retrieving images
         let url = URL(string: currentPokemon.imageUrl)
         DispatchQueue.global().async {
@@ -109,6 +117,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //CELL IS SELECTED, DISPLAY INDIVIDUAL POKEMON
+        selectedPokemon = pokemons[indexPath.row]
         performSegue(withIdentifier: "toProfile", sender: nil)
     }
     

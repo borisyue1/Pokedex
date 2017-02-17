@@ -49,7 +49,7 @@ class Pokemon {
         self.speed = speed
         self.total = total
         self.types = types
-        self.imageUrl = "http://img.pokemondb.net/artwork/\(name.components(separatedBy: " ")[0].lowercased().folding(options: .diacriticInsensitive, locale: .current)).jpg"
+        self.imageUrl = "http://img.pokemondb.net/artwork/\(name.components(separatedBy: " ")[0].lowercased().folding(options: .diacriticInsensitive, locale: .current).trimmingCharacters(in: CharacterSet(charactersIn: "01234567890%"))).jpg"
     }
     
 }
