@@ -13,7 +13,7 @@
         <scene sceneID="UbU-8V-6YI">
             <objects>
                 <navigationController id="Omi-el-6Kn" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jf5-Np-Vt3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jf5-Np-Vt3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -46,6 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="20" y="75"/>
         </scene>
         <!--Pokemon List View Controller-->
         <scene sceneID="4jo-nk-aP3">
@@ -128,7 +129,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="EmA-ID-8Px">
             <objects>
-                <tabBarController id="Ic7-xV-0ot" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tab Bar Controller" id="Ic7-xV-0ot" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Bo0-mA-xgD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

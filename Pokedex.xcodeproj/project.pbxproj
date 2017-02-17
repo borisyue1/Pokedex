@@ -22,9 +22,9 @@
 		B4CAF83D1E55A82B001827E5 /* PokemonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CAF83C1E55A82B001827E5 /* PokemonListViewController.swift */; };
 		B4CAF8411E55BBCA001827E5 /* PokemonListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CAF8401E55BBCA001827E5 /* PokemonListTableViewCell.swift */; };
 		B4CAF8431E570B6D001827E5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CAF8421E570B6D001827E5 /* ProfileViewController.swift */; };
-		B4CAF8471E571238001827E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CAF8461E571238001827E5 /* Main.storyboard */; };
 		B4CAF8491E5715BA001827E5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CAF8481E5715BA001827E5 /* FavoritesViewController.swift */; };
 		B4CAF84B1E5715CB001827E5 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CAF84A1E5715CB001827E5 /* WebViewViewController.swift */; };
+		B4CAF84D1E57333A001827E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CAF84C1E57333A001827E5 /* Main.storyboard */; };
 		F6D24928C080FE1729B944FD /* Pods_Pokedex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA3E2B4917CB32695712277 /* Pods_Pokedex.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,9 +68,9 @@
 		B4CAF83C1E55A82B001827E5 /* PokemonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonListViewController.swift; sourceTree = "<group>"; };
 		B4CAF8401E55BBCA001827E5 /* PokemonListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonListTableViewCell.swift; sourceTree = "<group>"; };
 		B4CAF8421E570B6D001827E5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		B4CAF8461E571238001827E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4CAF8481E5715BA001827E5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		B4CAF84A1E5715CB001827E5 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		B4CAF84C1E57333A001827E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CBA3E2B4917CB32695712277 /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16A0525BD6AA56106612E24 /* Pods-Pokedex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pokedex/Pods-Pokedex.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,9 +131,9 @@
 				3CFC6F101D98716000B4EBB5 /* ViewController.swift */,
 				B4CAF8341E556170001827E5 /* RectButton.swift */,
 				3CFC6F151D98716000B4EBB5 /* Assets.xcassets */,
-				B4CAF8461E571238001827E5 /* Main.storyboard */,
 				B4CAF8481E5715BA001827E5 /* FavoritesViewController.swift */,
 				B4CAF84A1E5715CB001827E5 /* WebViewViewController.swift */,
+				B4CAF84C1E57333A001827E5 /* Main.storyboard */,
 				3CFC6F171D98716000B4EBB5 /* LaunchScreen.storyboard */,
 				3CFC6F1A1D98716000B4EBB5 /* Info.plist */,
 				3CFC6F3E1D9871F100B4EBB5 /* Pokemon.swift */,
@@ -296,7 +296,7 @@
 				3CFC6F191D98716000B4EBB5 /* LaunchScreen.storyboard in Resources */,
 				3CFC6F161D98716000B4EBB5 /* Assets.xcassets in Resources */,
 				B4CAF8391E558153001827E5 /* pikachu.gif in Resources */,
-				B4CAF8471E571238001827E5 /* Main.storyboard in Resources */,
+				B4CAF84D1E57333A001827E5 /* Main.storyboard in Resources */,
 				B4CAF8371E55653E001827E5 /* Pokemon GB.ttf in Resources */,
 				3CFC6F3D1D98719100B4EBB5 /* pokeData.json in Resources */,
 			);

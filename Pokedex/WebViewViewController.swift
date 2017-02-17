@@ -10,25 +10,15 @@ import UIKit
 
 class WebViewViewController: UIViewController {
 
+    var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        webView = UIWebView(frame: CGRect(x: 0, y: (navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: view.frame.height))
+        view.addSubview(webView)
+        let googleUrl = NSURL(string: "https://www.google.com/search?q=" + ProfileViewController.currentPokemon.name)
+        let urlRequest = NSURLRequest(url: googleUrl! as URL)
+        webView.loadRequest(urlRequest as URLRequest)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -63,8 +63,8 @@ class PokemonListViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProfile" {
-            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
-            profileVC.currentPokemon = selectedPokemon
+//            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
+            ProfileViewController.currentPokemon = selectedPokemon
         }
     }
 }
@@ -83,7 +83,6 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
         }
         pokeCell.awakeFromNib() //initialize cell
         let currentPokemon = pokemons[indexPath.row]
-        print(currentPokemon.name)
         // retrieving images
         let url = URL(string: currentPokemon.imageUrl)
         DispatchQueue.global().async {

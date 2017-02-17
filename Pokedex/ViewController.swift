@@ -293,8 +293,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
             listVC.pokemons = self.pokemonsToPass
         }
         if segue.identifier == "toDirectProfile" {
-            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
-            profileVC.currentPokemon = pokemonDirectPass
+//            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
+            ProfileViewController.currentPokemon = pokemonDirectPass
         }
     }
     
