@@ -249,7 +249,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     func initPikachu() {
         let difference = (searchButton.frame.minY - healthPointsButton.frame.maxY) / 2
-        let imageView = UIImageView(frame: CGRect(x: view.frame.width / 2 - 35, y: healthPointsButton.frame.maxY + difference - 60, width: 120, height: 120))
+        let imageView = UIImageView(frame: CGRect(x: view.frame.width / 2 - 35, y: healthPointsButton.frame.maxY + difference - 70, width: 130, height: 130))
         imageView.animationImages = pikachu
         imageView.animationDuration = 0.8
         imageView.startAnimating()
@@ -272,18 +272,14 @@ class ViewController: UIViewController, UISearchBarDelegate {
         randomButton.titleLabel?.font = UIFont(name: "PokemonGB", size: 16.0)
         randomButton.titleLabel?.setTextSpacing(spacing: 0.7)
         randomButton.backgroundColor = UIColor.init(red:190/255, green:110/255, blue: 110/255, alpha: 1.0)
-        randomButton.addTarget(self, action: #selector(randomButtonClicked), for: .touchUpInside)
+        randomButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
         view.addSubview(randomButton)
     }
     
     func searchButtonClicked() {
-        print(pokemons.count)
+        generateList()
         performSegue(withIdentifier: "toList", sender: nil)
         
-    }
-    
-    func randomButtonClicked() {
-        performSegue(withIdentifier: "toList", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -380,13 +376,14 @@ class ViewController: UIViewController, UISearchBarDelegate {
         } else {
             generateWithoutSearchText()
         }
+        pokemonsToPass = pokemonsToPass.sorted{$0.name < $1.name} //sort alphabetically
     }
     //DONT FORGET INDIVUDUAL
     // if user entered something into search bar, this function is called
     func generateWithSearchText(){
         let selectedTypesSet: Set<String> = Set(typesToSearch)
         for pokemon in pokemons {
-            if pokemon.name.lowercased().contains(searchBarText.lowercased()) {
+            if pokemon.name.lowercased().contains(searchBarText.lowercased()) || Int(searchBarText) == pokemon.number {
                 let pokemonTypeSet: Set<String> = Set(pokemon.types)
                 if selectedTypesSet.intersection(pokemonTypeSet).count > 0 && pokemon.attack >= minATK && pokemon.defense > minDEF && pokemon.health > minHP { //if pokemon's types fall under search types and stat conditions met
                     pokemonsToPass.append(pokemon)
