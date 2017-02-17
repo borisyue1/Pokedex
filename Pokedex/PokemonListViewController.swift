@@ -17,11 +17,13 @@ class PokemonListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSegmentedControl()
-        if segmentedControl.selectedSegmentIndex == 0 {
-            setUpTableView()
-        }
-//        let customFont = UIFont(name: "Pokemon GB", size: 15.0)  //don't forget to put real font name here - otherwise it won't work or may cause crash (see NOTES) !!!
-//        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        setUpTableView()
+        changeNavBarText()
+    }
+    
+    func changeNavBarText() {
+//        let customFont = UIFont(name: "Pokemon GB", size: 15.0)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
     }
     
     func setUpTableView() {
@@ -35,9 +37,23 @@ class PokemonListViewController: UIViewController {
     
     func setUpSegmentedControl() {
         segmentedControl = UISegmentedControl(items: ["List", "Grid"])
+        segmentedControl.setWidth(70, forSegmentAt: 0)
+        segmentedControl.setWidth(70, forSegmentAt: 1) //increase width of segmented control
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.tintColor = UIColor.white
+        segmentedControl.addTarget(self, action: #selector(changeView), for: .valueChanged)
         navigationItem.titleView = segmentedControl
+    }
+    
+    func changeView() {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            setUpTableView()
+        case 1:
+            print("hi")
+        default:
+            print("default")
+        }
     }
 
 }
@@ -48,6 +64,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
         return pokemons.count
     }
     
+    // Setting up cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pokeCell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell") as! PokemonListTableViewCell
         for subview in pokeCell.contentView.subviews {
@@ -71,7 +88,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
         pokeCell.name.text = currentPokemon.name.replacingOccurrences(of: "  ", with: " ") // make it a bit neater
         pokeCell.name.sizeToFit()
         pokeCell.name.frame.origin.y = tableView.rowHeight / 2 - pokeCell.name.frame.height / 2
-        pokeCell.name.frame.origin.x = pokeCell.pokeImage.frame.maxX + 5
+        pokeCell.name.frame.origin.x = pokeCell.pokeImage.frame.maxX + 10
         pokeCell.pokeNum.text = "#\(currentPokemon.number!)"
         pokeCell.pokeNum.sizeToFit()
         pokeCell.pokeNum.frame.origin.y = tableView.rowHeight / 2 - pokeCell.pokeNum.frame.height / 2
@@ -81,6 +98,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //CELL IS SELECTED, DISPLAY INDIVIDUAL POKEMON
     }
     
     
