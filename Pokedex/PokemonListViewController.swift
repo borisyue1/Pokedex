@@ -93,7 +93,13 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
         pokeCell.name.sizeToFit()
         pokeCell.name.frame.origin.y = tableView.rowHeight / 2 - pokeCell.name.frame.height / 2
         pokeCell.name.frame.origin.x = pokeCell.pokeImage.frame.maxX + 10
-        pokeCell.pokeNum.text = "#\(currentPokemon.number!)"
+        if currentPokemon.number < 10 {
+            pokeCell.pokeNum.text = "#00\(currentPokemon.number!)"
+        } else if currentPokemon.number < 100 {
+            pokeCell.pokeNum.text = "#0\(currentPokemon.number!)"
+        } else {
+            pokeCell.pokeNum.text = "#\(currentPokemon.number!)"
+        }
         pokeCell.pokeNum.sizeToFit()
         pokeCell.pokeNum.frame.origin.y = tableView.rowHeight / 2 - pokeCell.pokeNum.frame.height / 2
         pokeCell.pokeNum.frame.origin.x = view.frame.width - pokeCell.pokeNum.frame.width - 15
@@ -103,6 +109,7 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //CELL IS SELECTED, DISPLAY INDIVIDUAL POKEMON
+        performSegue(withIdentifier: "toProfile", sender: nil)
     }
     
     
