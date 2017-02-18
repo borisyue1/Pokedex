@@ -58,7 +58,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         initSearchButtonUI()
         initRandomButtonUI()
         initPikachu()
-    
+        
     }
     
     func initSearchBar() {
@@ -293,9 +293,15 @@ class ViewController: UIViewController, UISearchBarDelegate {
             listVC.pokemons = self.pokemonsToPass
         }
         if segue.identifier == "toDirectProfile" {
-//            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
+            //            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
             ProfileViewController.currentPokemon = pokemonDirectPass
         }
+    }
+    
+    func produceIntegerRangeError() {
+        let alert = UIAlertController(title: "Error", message: "Please enter a valid integer between 0 and 200", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     //Event Listeners
@@ -312,9 +318,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
                                     if let textFields = self?.alertController?.textFields{
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
-                                        self?.minATK = Int(enteredText!)!
-                                        self?.attackPointsLabel.text = enteredText! + "-200"
-                                        self?.resizeAttackLabel()
+                                        if let number = Int(enteredText!) {
+                                            let num = Int(enteredText!)!
+                                            if num >= 0 && num <= 200 {
+                                                self?.minATK = Int(enteredText!)!
+                                                self?.attackPointsLabel.text = enteredText! + "-200"
+                                                self?.resizeAttackLabel()
+                                            } else {
+                                                self?.produceIntegerRangeError()
+                                            }
+                                        } else {
+                                            self?.produceIntegerRangeError()
+                                        }
                                     }
         })
         alertController?.addAction(action)
@@ -334,9 +349,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
                                     if let textFields = self?.alertController?.textFields{
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
-                                        self?.minDEF = Int(enteredText!)!
-                                        self?.defensePointsLabel.text = enteredText! + "-200"
-                                        self?.resizeDefenseLabel()
+                                        if let number = Int(enteredText!) {
+                                            let num = Int(enteredText!)!
+                                            if num >= 0 && num <= 200 {
+                                                self?.minDEF = Int(enteredText!)!
+                                                self?.defensePointsLabel.text = enteredText! + "-200"
+                                                self?.resizeDefenseLabel()
+                                            } else {
+                                                self?.produceIntegerRangeError()
+                                            }
+                                        } else {
+                                            self?.produceIntegerRangeError()
+                                        }
                                     }
         })
         alertController?.addAction(action)
@@ -346,7 +370,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     func healthClicked(sender:RectButton!) {
         alertController = UIAlertController(title: "Minimum HP", message: "", preferredStyle: .alert)
         alertController!.addTextField(configurationHandler: {(textField: UITextField!) in
-                textField.placeholder = "Enter minimum health"
+            textField.placeholder = "Enter minimum health"
         })
         let action = UIAlertAction(title: "Submit",
                                    style: UIAlertActionStyle.default,
@@ -355,9 +379,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
                                     if let textFields = self?.alertController?.textFields{
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
-                                        self?.minHP = Int(enteredText!)!
-                                        self?.healthPointsLabel.text = enteredText! + "-200"
-                                        self?.resizeHealthLabel()
+                                        if let number = Int(enteredText!) {
+                                            let num = Int(enteredText!)!
+                                            if num >= 0 && num <= 200 {
+                                                self?.minHP = Int(enteredText!)!
+                                                self?.healthPointsLabel.text = enteredText! + "-200"
+                                                self?.resizeHealthLabel()
+                                            } else {
+                                                self?.produceIntegerRangeError()
+                                            }
+                                        } else {
+                                            self?.produceIntegerRangeError()
+                                        }
                                     }
         })
         alertController?.addAction(action)
@@ -414,7 +447,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             }
         }
         performSegue(withIdentifier: "toList", sender: nil)
-
+        
     }
     
     func generateRandom() {
@@ -435,9 +468,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
         return i
     }
-                                
-}
     
+}
+
 extension UILabel{
     func setTextSpacing(spacing: CGFloat){
         let attributedString = NSMutableAttributedString(string: text!)
@@ -449,5 +482,6 @@ extension UILabel{
         attributedText = attributedString
     }
 }
+
 
 

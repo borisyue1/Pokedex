@@ -16,6 +16,7 @@
 		3CFC6F3D1D98719100B4EBB5 /* pokeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CFC6F3C1D98719100B4EBB5 /* pokeData.json */; };
 		3CFC6F3F1D9871F100B4EBB5 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC6F3E1D9871F100B4EBB5 /* Pokemon.swift */; };
 		3CFC6F411D9871FC00B4EBB5 /* PokemonGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC6F401D9871FC00B4EBB5 /* PokemonGenerator.swift */; };
+		B4424EAE1E57BBB900C9FB19 /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4424EAD1E57BBB900C9FB19 /* PokemonCollectionViewCell.swift */; };
 		B4CAF8351E556170001827E5 /* RectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CAF8341E556170001827E5 /* RectButton.swift */; };
 		B4CAF8371E55653E001827E5 /* Pokemon GB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4CAF8361E55653E001827E5 /* Pokemon GB.ttf */; };
 		B4CAF8391E558153001827E5 /* pikachu.gif in Resources */ = {isa = PBXBuildFile; fileRef = B4CAF8381E558153001827E5 /* pikachu.gif */; };
@@ -62,6 +63,7 @@
 		3CFC6F3E1D9871F100B4EBB5 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		3CFC6F401D9871FC00B4EBB5 /* PokemonGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonGenerator.swift; sourceTree = "<group>"; };
 		A00F8E81D99808C2132A62F0 /* Pods-Pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pokedex/Pods-Pokedex.debug.xcconfig"; sourceTree = "<group>"; };
+		B4424EAD1E57BBB900C9FB19 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4CAF8341E556170001827E5 /* RectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectButton.swift; sourceTree = "<group>"; };
 		B4CAF8361E55653E001827E5 /* Pokemon GB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pokemon GB.ttf"; sourceTree = "<group>"; };
 		B4CAF8381E558153001827E5 /* pikachu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pikachu.gif; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				3CFC6F3E1D9871F100B4EBB5 /* Pokemon.swift */,
 				3CFC6F401D9871FC00B4EBB5 /* PokemonGenerator.swift */,
 				B4CAF83C1E55A82B001827E5 /* PokemonListViewController.swift */,
+				B4424EAD1E57BBB900C9FB19 /* PokemonCollectionViewCell.swift */,
 				B4CAF8421E570B6D001827E5 /* ProfileViewController.swift */,
 				B4CAF8401E55BBCA001827E5 /* PokemonListTableViewCell.swift */,
 				B4CAF8381E558153001827E5 /* pikachu.gif */,
@@ -374,6 +377,7 @@
 				B4CAF84B1E5715CB001827E5 /* WebViewViewController.swift in Sources */,
 				B4CAF8351E556170001827E5 /* RectButton.swift in Sources */,
 				B4CAF8491E5715BA001827E5 /* FavoritesViewController.swift in Sources */,
+				B4424EAE1E57BBB900C9FB19 /* PokemonCollectionViewCell.swift in Sources */,
 				3CFC6F111D98716000B4EBB5 /* ViewController.swift in Sources */,
 				3CFC6F411D9871FC00B4EBB5 /* PokemonGenerator.swift in Sources */,
 				3CFC6F0F1D98716000B4EBB5 /* AppDelegate.swift in Sources */,

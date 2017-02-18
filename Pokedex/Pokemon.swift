@@ -36,8 +36,9 @@ class Pokemon {
     let total: Int!
     let types: [String]
     let imageUrl: String!
+    let flavorText: String!
     
-    init(name: String, number: Int, attack: Int, defense: Int, health: Int, spAttack: Int, spDef: Int, species: String, speed: Int, total: Int, types: [String]) {
+    init(name: String, number: Int, attack: Int, defense: Int, health: Int, spAttack: Int, spDef: Int, species: String, speed: Int, total: Int, types: [String], flavorText: String) {
         self.name = name
         self.number = number
         self.attack = attack
@@ -50,6 +51,7 @@ class Pokemon {
         self.total = total
         self.types = types
         self.imageUrl = "http://img.pokemondb.net/artwork/\(name.components(separatedBy: " ")[0].lowercased().folding(options: .diacriticInsensitive, locale: .current).trimmingCharacters(in: CharacterSet(charactersIn: "01234567890%"))).jpg"
+        self.flavorText = flavorText
     }
     
 }

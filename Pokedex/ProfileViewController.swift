@@ -12,6 +12,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    var scrollView: UIScrollView!   //The scroll view that contains everything
+    
     var types = ["fire", "flying"]
     static var currentPokemon : Pokemon!
     let favorites = UserDefaults.standard
@@ -33,8 +35,14 @@ class ProfileViewController: UIViewController {
     
     var typeRects : [RectButton] = []
     
+    var flavorTitle: UILabel!
+    var flavorText: UILabel!
+    
+    var genericView = UIView()
+    
     var topView = UIView()
     var middleView = UIView()
+    var bottomView = UIView()
     var favoriteButton: RectButton!
     
     override func viewDidLoad() {
@@ -53,7 +61,9 @@ class ProfileViewController: UIViewController {
         initDEFLabelUI()
         initHPLabelUI()
         initTypeRectsUI()
-        
+//        scrollView = UIScrollView(frame: view.bounds)
+//        scrollView.isUserInteractionEnabled = true
+        genericView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         topView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: typeRects[0].frame.maxY + 20))
         topView.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
         
@@ -76,38 +86,38 @@ class ProfileViewController: UIViewController {
         initSpDefenseLabelUI()
         initSpeedLabelUI()
         initTotalLabelUI()
-        
+
         middleView = UIView(frame: CGRect(x: 0, y: topView.frame.maxY, width: view.frame.width, height: totalLabel.frame.maxY + 20))   //HEIGHT IS CURRENTLY SOME ARBITRARY VALUE, WILL BE SET WHEN ALL COMPONENTS HAVE BEEN ADDED TO MIDDLE VIEW
         middleView.backgroundColor = UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
-        
         middleView.addSubview(statsLabel)
         middleView.addSubview(speciesLabel)
         middleView.addSubview(spAttackLabel)
         middleView.addSubview(spDefLabel)
         middleView.addSubview(speedLabel)
         middleView.addSubview(totalLabel)
-        
-        //topView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: typeRects[0].frame.maxY))
-        
+        if ProfileViewController.currentPokemon.flavorText != "" {
+            initFlavorUI()
+            view.addSubview(flavorTitle)
+            view.addSubview(flavorText)
+        }
         let url = URL(string: ProfileViewController.currentPokemon.imageUrl)
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
                 if let dataRetrieved = data {
                     self.imageView.image = UIImage(data: dataRetrieved)
-                    //pokeCell.pokeImage.image = UIImage(data: dataRetrieved)
                 } else {
-                    //pokeCell.pokeImage.image = #imageLiteral(resourceName: "question-mark")
                     self.imageView.image = #imageLiteral(resourceName: "question-mark")
                 }
             }
         }
         initFavoriteButton()
-        view.addSubview(topView)
-        view.addSubview(middleView)
-        // Do any additional setup after loading the view.
+        genericView.addSubview(topView)
+        genericView.addSubview(middleView)
+        view.addSubview(genericView)
+        view.addSubview(favoriteButton)
     }
-
+    
     func initTypeRectsUI() {
         if ProfileViewController.currentPokemon.types.count == 1 {
             typeRects.append(RectButton(frame: CGRect(x: view.frame.width / 2 - 60, y: imageView.frame.maxY + 10, width: 120, height: 35)))
@@ -215,6 +225,8 @@ class ProfileViewController: UIViewController {
         speciesLabel.text = "Species: " + ProfileViewController.currentPokemon.species
         speciesLabel.setTextSpacing(spacing: 3.0)
         speciesLabel.font = UIFont.init(name: "PokemonGB", size: 12.0)
+        
+        speciesLabel.numberOfLines = 0
     }
     
     func initSpAttackLabelUI() {
@@ -249,14 +261,34 @@ class ProfileViewController: UIViewController {
         totalLabel.font = UIFont.init(name: "PokemonGB", size: 12.0)
     }
     
+    func initFlavorUI() {
+        flavorTitle = UILabel(frame: CGRect(x: 0, y: middleView.frame.maxY + 5, width: view.frame.width, height: 50))
+        flavorTitle.textAlignment = NSTextAlignment.center
+        flavorTitle.text = "Did you know?"
+        flavorTitle.setTextSpacing(spacing: 7.0)
+        flavorTitle.font = UIFont.init(name: "PokemonGB", size: 18.0)
+        
+        flavorText = UILabel(frame: CGRect(x: 0, y: flavorTitle.frame.maxY - 40, width: view.frame.width, height: 0))
+        flavorText.numberOfLines = 0    //Causes the text in the label to wrap
+        flavorText.textAlignment = NSTextAlignment.center
+        flavorText.text = ProfileViewController.currentPokemon.flavorText
+        flavorText.setTextSpacing(spacing: 1.0)
+        flavorText.font = UIFont.init(name: "PokemonGB", size: 12.0)
+        flavorText.sizeToFit()
+        flavorText.frame = CGRect(x:0, y: flavorTitle.frame.maxY + 10, width: view.frame.width, height: flavorText.frame.height + 10)
+    }
+    
     func initFavoriteButton() {
-        favoriteButton = RectButton(frame: CGRect(x: view.frame.width / 2 - 125, y: middleView.frame.maxY + 80, width: 250, height: 35))
+        if (ProfileViewController.currentPokemon.flavorText != "") {
+            favoriteButton = RectButton(frame: CGRect(x: view.frame.width / 2 - 125, y: flavorText.frame.maxY + 5, width: 250, height: 35))
+        } else {
+            favoriteButton = RectButton(frame: CGRect(x: view.frame.width / 2 - 125, y: middleView.frame.maxY + 70, width: 250, height: 35))
+        }
         favoriteButton.setTitle("Add to Favorites", for: .normal)
         favoriteButton.titleLabel?.font = UIFont(name: "PokemonGB", size: 12.0)
         favoriteButton.titleLabel?.setTextSpacing(spacing: 0.7)
         favoriteButton.backgroundColor = UIColor.init(red:190/255, green:110/255, blue: 110/255, alpha: 1.0)
         favoriteButton.addTarget(self, action: #selector(addToFavorite), for: .touchUpInside)
-        view.addSubview(favoriteButton)
     }
     
     func addToFavorite() {

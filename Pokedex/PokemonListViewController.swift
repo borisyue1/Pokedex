@@ -6,14 +6,16 @@
 //
 //
 
+
 import UIKit
 
 class PokemonListViewController: UIViewController {
-
+    
     var pokemons: [Pokemon]!
     var selectedPokemon: Pokemon!
     var tableView: UITableView!
     var segmentedControl: UISegmentedControl!
+    var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class PokemonListViewController: UIViewController {
     }
     
     func changeNavBarText() {
-//        let customFont = UIFont(name: "Pokemon GB", size: 15.0)
+        //        let customFont = UIFont(name: "Pokemon GB", size: 15.0)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
     }
     
@@ -37,7 +39,16 @@ class PokemonListViewController: UIViewController {
     }
     
     func setUpCollectionView() {
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.maxY + 30, width: view.frame.width, height: view.frame.height), collectionViewLayout: layout)
+        collectionView.register(PokemonCollectionViewCell.self, forCellWithReuseIdentifier: "pokemonCell")
+        collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        view.addSubview(collectionView)
     }
     
     func setUpSegmentedControl() {
@@ -60,10 +71,9 @@ class PokemonListViewController: UIViewController {
             print("default")
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProfile" {
-//            let profileVC = segue.destination.childViewControllers[0] as! ProfileViewController
             ProfileViewController.currentPokemon = selectedPokemon
         }
     }
@@ -121,4 +131,71 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     
+    
+}
+
+
+
+
+extension PokemonListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return pokemons.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pokemonCell", for: indexPath) as! PokemonCollectionViewCell
+        
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview() //remove previous subviews in cell
+        }
+        cell.awakeFromNib() //initialize cell
+        let currentPokemon = pokemons[indexPath.row]
+        // get the images using URL, set to questionmark if nonexistant
+        let url = URL(string: currentPokemon.imageUrl)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                if let dataRetrieved = data {
+                    cell.pokemonImageView.image = UIImage(data: dataRetrieved)
+                } else {
+                    cell.pokemonImageView.image = #imageLiteral(resourceName: "question-mark")
+                }
+            }
+        }
+        //sets up the name and num
+        cell.pokemonName.text = currentPokemon.name.replacingOccurrences(of: "  ", with: " ")
+        
+        if currentPokemon.number < 10 {
+            cell.pokemonName.text = "#00\(currentPokemon.number!)" + " " + cell.pokemonName.text!
+        } else if currentPokemon.number < 100 {
+            cell.pokemonName.text = "#00\(currentPokemon.number!)" + " " + cell.pokemonName.text!
+        } else {
+            cell.pokemonName.text = "#00\(currentPokemon.number!)" + " " + cell.pokemonName.text!
+        }
+        
+        
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let pokemonCell = cell as! PokemonCollectionViewCell
+        pokemonCell.pokemonName.setTextSpacing(spacing: 0.08)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width/3 - 20, height: view.frame.width/3 + 50 )
+    }
+    func collectionView(_ tableView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //CELL IS SELECTED, DISPLAY INDIVIDUAL POKEMON
+        selectedPokemon = pokemons[indexPath.row]
+        performSegue(withIdentifier: "toProfile", sender: nil)
+    }
 }
