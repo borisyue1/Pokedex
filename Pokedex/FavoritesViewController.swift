@@ -11,7 +11,7 @@ import UIKit
 class FavoritesViewController: UIViewController {
 
     var favorites = UserDefaults.standard
-    var array: [[String]] = [[]]
+    var array: [[String]] = [[]] //contains information about each favorite Pokemon
     var tableView: UITableView!
     
     override func viewDidLoad() {
